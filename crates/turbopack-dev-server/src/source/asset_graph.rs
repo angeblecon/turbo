@@ -114,6 +114,7 @@ impl AssetGraphContentSourceVc {
             }
         }
         for (p_vc, asset) in assets {
+            let asset = asset.resolve().await?;
             // For clippy -- This explicit deref is necessary
             let p = &*p_vc.await?;
             if let Some(sub_path) = root_path.get_path_to(p) {
